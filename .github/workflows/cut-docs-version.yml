@@ -1,0 +1,83 @@
+name: Cut Docs Version
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to snapshot (for example 1.1.0)"
+        required: true
+        type: string
+  repository_dispatch:
+    types: [symphony-release]
+
+permissions:
+  contents: write
+
+jobs:
+  version-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Resolve version
+        run: |
+          VERSION_INPUT="${{ github.event.inputs.version }}"
+          VERSION_PAYLOAD="${{ github.event.client_payload.version }}"
+          VERSION="$VERSION_INPUT"
+          if [ -z "$VERSION" ]; then
+            VERSION="$VERSION_PAYLOAD"
+          fi
+          if [ -z "$VERSION" ]; then
+            echo "No version provided."
+            exit 1
+          fi
+          TAG="$VERSION"
+          DOCS_VERSION="${VERSION#v}"
+          echo "TAG=$TAG" >> "$GITHUB_ENV"
+          echo "DOCS_VERSION=$DOCS_VERSION" >> "$GITHUB_ENV"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Create docs version snapshot
+        run: npm run version:docs -- "$DOCS_VERSION"
+
+      - name: Commit and push version updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add versions.json versioned_docs versioned_sidebars
+          if git diff --cached --quiet; then
+            echo "No version changes to commit."
+            exit 0
+          fi
+          git commit -m "chore(docs): cut version ${DOCS_VERSION}"
+          git push origin HEAD:main
+
+      - name: Create or update docs release
+        run: |
+          BODY_FILE="$(mktemp)"
+          cat > "$BODY_FILE" <<EOF
+          ## Symphony API Docs ${DOCS_VERSION}
+
+          Automated docs version cut and publish.
+
+          - Docs version: \`${DOCS_VERSION}\`
+          - Source release tag: \`${TAG}\`
+          - Site: https://alse-sym.github.io/symphony-api-demo-docs/
+          EOF
+
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release edit "$TAG" --notes-file "$BODY_FILE"
+          else
+            gh release create "$TAG" --target main --title "$TAG" --notes-file "$BODY_FILE"
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
