@@ -1,6 +1,5 @@
 /* ============================================================================
    Symphony API Docs — Custom Theme
-   Professional, clean, compact documentation design
    ============================================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
@@ -10,7 +9,6 @@
    --------------------------------------------------------------------------- */
 
 :root {
-  /* Primary palette — teal / emerald */
   --ifm-color-primary: #14b8a6;
   --ifm-color-primary-dark: #0d9488;
   --ifm-color-primary-darker: #0f766e;
@@ -19,53 +17,48 @@
   --ifm-color-primary-lighter: #5eead4;
   --ifm-color-primary-lightest: #99f6e4;
 
-  /* Typography */
   --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, Oxygen, Ubuntu, sans-serif;
   --ifm-font-family-monospace: 'JetBrains Mono', 'Fira Code', 'SF Mono',
     Monaco, 'Cascadia Code', Consolas, monospace;
-  --ifm-font-size-base: 15px;
-  --ifm-line-height-base: 1.65;
+  --ifm-font-size-base: 13.5px;
+  --ifm-line-height-base: 1.7;
 
-  /* Spacing — compact */
   --ifm-spacing-horizontal: 1rem;
   --ifm-spacing-vertical: 0.75rem;
-  --doc-sidebar-width: 260px !important;
-  --ifm-global-radius: 6px;
+  --doc-sidebar-width: 250px !important;
+  --ifm-global-radius: 5px;
 
-  /* Heading sizes — tighter */
-  --ifm-h1-font-size: 1.75rem;
-  --ifm-h2-font-size: 1.35rem;
-  --ifm-h3-font-size: 1.1rem;
-  --ifm-h4-font-size: 0.95rem;
-  --ifm-heading-margin-bottom: 0.6rem;
+  --ifm-h1-font-size: 1.6rem;
+  --ifm-h2-font-size: 1.15rem;
+  --ifm-h3-font-size: 1rem;
+  --ifm-h4-font-size: 0.9rem;
+  --ifm-heading-margin-bottom: 0.5rem;
+  --ifm-heading-margin-top: 0;
 
-  /* Navbar */
-  --ifm-navbar-height: 3.25rem;
-  --ifm-navbar-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.07);
+  --ifm-navbar-height: 3rem;
+  --ifm-navbar-shadow: none;
 
-  /* Cards & surfaces */
   --ifm-card-background-color: #ffffff;
   --custom-border-color: #e5e7eb;
-  --custom-bg-subtle: #f8f9fb;
+  --custom-bg-subtle: #f8fafc;
   --custom-bg-sidebar: #f9fafb;
-  --custom-text-primary: #111827;
-  --custom-text-secondary: #4b5563;
-  --custom-text-muted: #9ca3af;
+  --custom-text-primary: #1e293b;
+  --custom-text-secondary: #475569;
+  --custom-text-muted: #94a3b8;
 
-  /* Code */
-  --ifm-code-font-size: 85%;
-  --ifm-code-padding-vertical: 0.15rem;
-  --ifm-code-padding-horizontal: 0.35rem;
+  --ifm-code-font-size: 80%;
+  --ifm-code-padding-vertical: 0.1rem;
+  --ifm-code-padding-horizontal: 0.3rem;
   --ifm-code-background: #f1f5f9;
-  --ifm-code-border-radius: 4px;
+  --ifm-code-border-radius: 3px;
   --prism-background-color: #1e293b;
 
-  /* Table of contents */
   --ifm-toc-border-color: var(--custom-border-color);
+  --ifm-footer-padding-vertical: 1.25rem;
 
-  /* Footer */
-  --ifm-footer-padding-vertical: 1.5rem;
+  --ifm-paragraph-margin-bottom: 0.75rem;
+  --ifm-list-margin: 0.75rem;
 }
 
 [data-theme='dark'] {
@@ -77,10 +70,10 @@
   --ifm-color-primary-lighter: #99f6e4;
   --ifm-color-primary-lightest: #ccfbf1;
 
-  --custom-border-color: #1f2937;
-  --custom-bg-subtle: #111827;
-  --custom-bg-sidebar: #0f172a;
-  --custom-text-primary: #f1f5f9;
+  --custom-border-color: #1e293b;
+  --custom-bg-subtle: #0f172a;
+  --custom-bg-sidebar: #0c1322;
+  --custom-text-primary: #e2e8f0;
   --custom-text-secondary: #94a3b8;
   --custom-text-muted: #64748b;
   --ifm-code-background: #1e293b;
@@ -112,31 +105,27 @@ body {
   box-shadow: none;
   padding: 0 1.25rem;
   backdrop-filter: saturate(180%) blur(12px);
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.88);
 }
 
 [data-theme='dark'] .navbar {
-  background: rgba(11, 17, 32, 0.85);
-  border-bottom-color: var(--custom-border-color);
+  background: rgba(11, 17, 32, 0.88);
 }
 
 .navbar__title {
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.875rem;
   letter-spacing: -0.01em;
 }
 
 .navbar__link {
-  font-size: 0.825rem;
+  font-size: 0.8rem;
   font-weight: 500;
 }
 
-.navbar__items--right .navbar__link {
-  font-size: 0.8rem;
-}
-
+.navbar__items--right .navbar__link,
 .navbar__item.dropdown .navbar__link {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
 }
 
 /* ---------------------------------------------------------------------------
@@ -148,7 +137,7 @@ body {
 }
 
 nav.menu {
-  padding: 0.5rem 0.6rem;
+  padding: 0.4rem 0.5rem;
   background: var(--custom-bg-sidebar);
 }
 
@@ -157,7 +146,7 @@ nav.menu {
 }
 
 .menu__list {
-  font-size: 0.825rem;
+  font-size: 0.78rem;
   transition: none;
 }
 
@@ -167,11 +156,11 @@ nav.menu {
 }
 
 .menu__link {
-  padding: 0.3rem 0.65rem;
-  border-radius: 5px;
+  padding: 0.25rem 0.55rem;
+  border-radius: 4px;
   font-weight: 450;
   color: var(--custom-text-secondary);
-  line-height: 1.45;
+  line-height: 1.4;
   transition: background 0.15s ease, color 0.15s ease;
 }
 
@@ -192,7 +181,7 @@ nav.menu {
 }
 
 .menu__list-item-collapsible {
-  margin-top: 0.65rem;
+  margin-top: 0.6rem;
 }
 
 .menu__list-item-collapsible:first-child {
@@ -200,12 +189,12 @@ nav.menu {
 }
 
 .menu__list-item-collapsible > .menu__link {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--custom-text-muted);
-  padding: 0.35rem 0.65rem 0.2rem;
+  padding: 0.3rem 0.55rem 0.15rem;
 }
 
 .menu__list-item-collapsible > .menu__link:hover {
@@ -215,40 +204,46 @@ nav.menu {
 
 .menu__list .menu__list {
   padding-left: 0;
-  margin-left: 0.55rem;
+  margin-left: 0.5rem;
   border-left: 1px solid var(--custom-border-color);
 }
 
 /* ---------------------------------------------------------------------------
-   Main Content
+   Main Content — spacing & vertical rhythm
    --------------------------------------------------------------------------- */
 
 .theme-doc-markdown {
-  --ifm-leading: 1.6;
+  --ifm-leading: 1.65;
 }
 
-.theme-doc-markdown h1 {
+article .theme-doc-markdown h1 {
   font-weight: 700;
-  letter-spacing: -0.025em;
-  margin-bottom: 0.5rem;
-  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem 0 !important;
+  line-height: 1.25;
 }
 
-.theme-doc-markdown h1:first-child {
-  font-size: 1.85rem;
+article .theme-doc-markdown h1:first-child {
+  font-size: 1.5rem;
+  margin: 0 0 1.25rem 0 !important;
 }
 
-.theme-doc-markdown h2 {
+article .theme-doc-markdown h2 {
   font-weight: 650;
-  letter-spacing: -0.015em;
-  margin-top: 2rem;
-  padding-bottom: 0.4rem;
+  letter-spacing: -0.01em;
+  margin: 3.5rem 0 1.25rem 0 !important;
+  padding-bottom: 0.45rem;
   border-bottom: 1px solid var(--custom-border-color);
 }
 
-.theme-doc-markdown h3 {
+article .theme-doc-markdown h3 {
   font-weight: 600;
-  margin-top: 1.5rem;
+  margin: 2.75rem 0 1rem 0 !important;
+}
+
+article .theme-doc-markdown h4 {
+  font-weight: 600;
+  margin: 2rem 0 0.75rem 0 !important;
 }
 
 .theme-doc-markdown p {
@@ -258,6 +253,14 @@ nav.menu {
 
 .theme-doc-markdown li {
   color: var(--custom-text-secondary);
+  margin-bottom: 0.2rem;
+}
+
+.theme-doc-markdown ul,
+.theme-doc-markdown ol {
+  margin-top: 0.5rem;
+  margin-bottom: 0.85rem;
+  padding-left: 1.25rem;
 }
 
 .theme-doc-markdown strong {
@@ -265,23 +268,56 @@ nav.menu {
   font-weight: 600;
 }
 
-article {
-  max-width: 46rem;
+.theme-doc-markdown > *:first-child {
+  margin-top: 0;
 }
 
-.docItemCol_node_modules {
-  max-width: 46rem !important;
+/* Vertical rhythm — consistent gaps between all sibling blocks */
+article .theme-doc-markdown > p,
+article .theme-doc-markdown > ul,
+article .theme-doc-markdown > ol,
+article .theme-doc-markdown > blockquote {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.85rem !important;
+}
+
+article .theme-doc-markdown > table {
+  margin-top: 0.75rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+article .theme-doc-markdown > div[class^='codeBlockContainer'] {
+  margin-top: 0.65rem !important;
+  margin-bottom: 1.25rem !important;
+}
+
+article .theme-doc-markdown > .admonition {
+  margin-top: 0.75rem !important;
+  margin-bottom: 1.25rem !important;
+}
+
+article .theme-doc-markdown > hr {
+  margin: 2.5rem 0 !important;
+}
+
+article .theme-doc-markdown > *:first-child {
+  margin-top: 0 !important;
+}
+
+article {
+  max-width: 48rem;
 }
 
 /* Pagination */
 .pagination-nav {
+  margin-top: 2.5rem;
   gap: 0.75rem;
 }
 
 .pagination-nav__link {
   border-color: var(--custom-border-color);
   border-radius: var(--ifm-global-radius);
-  padding: 0.75rem 1rem;
+  padding: 0.6rem 0.85rem;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
@@ -291,28 +327,28 @@ article {
 }
 
 .pagination-nav__sublabel {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--custom-text-muted);
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.1rem;
 }
 
 .pagination-nav__label {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 550;
 }
 
 /* Breadcrumbs */
 .breadcrumbs {
-  font-size: 0.78rem;
-  margin-bottom: 0.75rem;
+  font-size: 0.72rem;
+  margin-bottom: 0.5rem;
 }
 
 .breadcrumbs__link {
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
 }
 
 /* ---------------------------------------------------------------------------
@@ -323,10 +359,24 @@ code {
   border: 1px solid var(--custom-border-color);
   background: var(--ifm-code-background);
   font-weight: 450;
+  font-size: 0.8em;
 }
 
 [data-theme='dark'] code {
   border-color: #334155;
+  background: rgba(30, 41, 59, 0.6);
+}
+
+/* Better contrast for code inside table cells */
+table code {
+  font-size: 0.78em;
+  padding: 0.05rem 0.25rem;
+}
+
+[data-theme='dark'] table code {
+  background: rgba(45, 212, 191, 0.08);
+  border-color: rgba(45, 212, 191, 0.15);
+  color: #5eead4;
 }
 
 /* ---------------------------------------------------------------------------
@@ -334,8 +384,8 @@ code {
    --------------------------------------------------------------------------- */
 
 .prism-code {
-  font-size: 0.82rem;
-  line-height: 1.55;
+  font-size: 0.78rem;
+  line-height: 1.5;
   border-radius: var(--ifm-global-radius);
 }
 
@@ -344,6 +394,7 @@ div[class^='codeBlockContainer'] {
   border: 1px solid var(--custom-border-color);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
   overflow: hidden;
+  margin-top: 0.5rem;
   margin-bottom: 1rem;
 }
 
@@ -353,10 +404,10 @@ div[class^='codeBlockContainer'] {
 }
 
 div[class^='codeBlockTitle'] {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.01em;
-  padding: 0.45rem 1rem;
+  padding: 0.35rem 0.85rem;
   border-bottom: 1px solid var(--custom-border-color);
   background: var(--custom-bg-subtle);
 }
@@ -370,28 +421,32 @@ div[class^='codeBlockTitle'] {
    --------------------------------------------------------------------------- */
 
 table {
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   display: table;
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.25rem;
 }
 
 table th {
   font-weight: 600;
-  font-size: 0.78rem;
+  font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
   color: var(--custom-text-muted);
   background: var(--custom-bg-subtle);
-  padding: 0.55rem 0.85rem;
+  padding: 0.35rem 0.65rem;
   border-bottom: 2px solid var(--custom-border-color);
+  white-space: nowrap;
 }
 
 table td {
-  padding: 0.55rem 0.85rem;
+  padding: 0.35rem 0.65rem;
   border-bottom: 1px solid var(--custom-border-color);
   color: var(--custom-text-secondary);
+  line-height: 1.5;
+  vertical-align: top;
 }
 
 table tr:last-child td {
@@ -407,18 +462,18 @@ table a {
    --------------------------------------------------------------------------- */
 
 .table-of-contents {
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   padding-left: 0;
   border-left: 1px solid var(--custom-border-color);
 }
 
 .table-of-contents li {
-  margin: 0.15rem 0;
+  margin: 0.1rem 0;
 }
 
 .table-of-contents__link {
   color: var(--custom-text-muted);
-  padding: 0.15rem 0.75rem;
+  padding: 0.1rem 0.6rem;
   display: block;
   transition: color 0.15s ease;
 }
@@ -442,18 +497,18 @@ table a {
   border-radius: var(--ifm-global-radius);
   border: 1px solid;
   border-left-width: 3px;
-  font-size: 0.875rem;
-  padding: 0.7rem 1rem;
-  margin-bottom: 1rem;
+  font-size: 0.82rem;
+  padding: 0.55rem 0.85rem;
+  margin-bottom: 0.75rem;
   box-shadow: none;
 }
 
 .admonition .admonition-heading {
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.2rem;
 }
 
 .admonition .admonition-content p:last-child {
@@ -487,7 +542,7 @@ a {
 .footer {
   background: var(--custom-bg-subtle);
   border-top: 1px solid var(--custom-border-color);
-  padding: 1.5rem 0;
+  padding: 1.25rem 0;
 }
 
 [data-theme='dark'] .footer {
@@ -495,17 +550,17 @@ a {
 }
 
 .footer__copyright {
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   color: var(--custom-text-muted);
 }
 
 /* ---------------------------------------------------------------------------
-   Scrollbar (subtle)
+   Scrollbar
    --------------------------------------------------------------------------- */
 
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -513,32 +568,32 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.12);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.22);
 }
 
 [data-theme='dark'] ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 [data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.18);
 }
 
 /* ---------------------------------------------------------------------------
-   Version badge / dropdown
+   Version dropdown
    --------------------------------------------------------------------------- */
 
 .dropdown > .navbar__link::after {
-  margin-left: 0.35rem;
+  margin-left: 0.3rem;
 }
 
 /* ---------------------------------------------------------------------------
-   Search (if Algolia or local search is added)
+   Search
    --------------------------------------------------------------------------- */
 
 .DocSearch-Button {
@@ -546,7 +601,7 @@ a {
 }
 
 /* ---------------------------------------------------------------------------
-   Responsive — tighten further on smaller viewports
+   Responsive
    --------------------------------------------------------------------------- */
 
 @media (max-width: 996px) {
@@ -557,10 +612,10 @@ a {
 
 @media (max-width: 768px) {
   :root {
-    --ifm-font-size-base: 14.5px;
+    --ifm-font-size-base: 13px;
   }
 
   .theme-doc-markdown h1:first-child {
-    font-size: 1.55rem;
+    font-size: 1.35rem;
   }
 }
