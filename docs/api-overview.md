@@ -98,3 +98,10 @@ Cross-Origin Resource Sharing is enabled for all origins by default (`cors()` mi
 | `GET` | `/api/comments/:id` | Get comment |
 | `PATCH` | `/api/comments/:id` | Update comment |
 | `DELETE` | `/api/comments/:id` | Delete comment |
+| `GET` | `/api/sprints` | List sprints |
+| `POST` | `/api/sprints` | Create sprint |
+| `GET` | `/api/sprints/:id` | Get sprint |
+| `PATCH` | `/api/sprints/:id` | Update sprint |
+| `POST` | `/api/sprints/:id/tasks` | Add task to sprint |
+| `DELETE` | `/api/sprints/:id/tasks/:taskId` | Remove task from sprint |
+| `DELETE` | `/api/sprints/:id` | Delete sprint |
