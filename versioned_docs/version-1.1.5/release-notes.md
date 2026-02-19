@@ -75,6 +75,59 @@ All endpoints include comprehensive seed data for testing and development.
 
 ---
 
+## v1.1.5
+
+## Highlights
+
+This release adds five new API resources to the Symphony project management demo, expanding core functionality for audit trails, event-driven integrations, time tracking, collaboration, and milestone management.
+
+## Breaking Changes
+
+None
+
+## Enhancements
+
+### Activity Log API ([#12](https://github.com/alse-sym/symphony-api-demo/pull/12))
+- Added `/api/activity-log` endpoints for comprehensive audit trail tracking
+- Append-only design with rich filtering by action, actor, resource type/ID, and time range
+- Results sorted newest-first with pagination support
+- 10 seed entries covering events across tasks, milestones, comments, projects, sprints, and webhooks
+
+### Webhooks API ([#11](https://github.com/alse-sym/symphony-api-demo/pull/11))
+- Added `/api/webhooks` for registering event callbacks
+- Event type validation against whitelist with wildcard (`*`) subscription support
+- Auto-generated secrets returned once on creation, redacted in all read responses for security
+- Active/inactive toggling for webhook management
+- 4 seed webhooks with various event subscriptions
+
+### Time Entries API ([#8](https://github.com/alse-sym/symphony-api-demo/pull/8))
+- Added `/api/time-entries` for logging hours worked on tasks
+- Filter by taskId, username, and date for flexible reporting
+- Full CRUD support with immutable fields protection
+- 7 seed entries across existing tasks and users
+
+### Comments API ([#4](https://github.com/alse-sym/symphony-api-demo/pull/4))
+- Added `/api/comments` with full CRUD endpoints
+- Polymorphic `targetType`/`targetId` pattern supports attaching comments to tasks or projects
+- Filter by target type, target ID, or author
+- 6 seed comments referencing existing tasks and projects
+
+### Milestones API ([#1](https://github.com/alse-sym/symphony-api-demo/pull/1))
+- Added `/api/milestones` for tracking project milestones
+- Full CRUD operations with filtering by project and status
+- Automatic `reachedAt` timestamp when status becomes `reached`
+- 5 seed milestones across existing projects
+
+## Fixes
+
+None
+
+## Upgrade Notes
+
+No migration required. All new resources include seed data and are immediately available at their respective endpoints.
+
+---
+
 ## v1.1.4
 
 ## Highlights
