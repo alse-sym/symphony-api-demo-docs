@@ -98,3 +98,9 @@ Cross-Origin Resource Sharing is enabled for all origins by default (`cors()` mi
 | `GET` | `/api/comments/:id` | Get comment |
 | `PATCH` | `/api/comments/:id` | Update comment |
 | `DELETE` | `/api/comments/:id` | Delete comment |
+| `GET` | `/api/notifications` | List notifications |
+| `POST` | `/api/notifications` | Create notification |
+| `GET` | `/api/notifications/:id` | Get notification |
+| `PATCH` | `/api/notifications/:id/read` | Mark notification as read |
+| `PATCH` | `/api/notifications/read-all` | Mark all notifications as read |
+| `DELETE` | `/api/notifications/:id` | Delete notification |
