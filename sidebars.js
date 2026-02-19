@@ -30,7 +30,13 @@ const sidebars = {
       type: "category",
       label: "API Reference",
       collapsed: false,
-      items: ["projects-api", "tasks-api", "teams-api"],
+      items: [
+        "projects-api",
+        "tasks-api",
+        "teams-api",
+        "comments-api",
+        "notifications-api",
+      ],
     },
     {
       type: "category",
