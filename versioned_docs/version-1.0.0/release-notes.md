@@ -11,6 +11,70 @@ This page tracks changes across Symphony API releases. Release notes are generat
 
 ---
 
+## v.1.1.3
+
+## Highlights
+
+This release adds four powerful new API resources to Symphony, expanding project management capabilities with webhooks, time tracking, comments, and milestone management.
+
+## Breaking Changes
+
+None
+
+## Enhancements
+
+### Webhooks API ([#11](https://github.com/alse-sym/symphony-api-demo/pull/11))
+- Added `/api/webhooks` resource for registering event callbacks
+- Supports 12 event types plus wildcard (`*`) subscriptions: `project.created`, `project.updated`, `project.deleted`, `task.created`, `task.updated`, `task.deleted`, `comment.created`, `comment.updated`, `comment.deleted`, `milestone.reached`, `sprint.started`, `sprint.completed`
+- Auto-generated secrets with secure redaction in all read responses
+- Filter webhooks by `active` status and `event` type
+- Event validation ensures only supported events can be registered
+
+### Time Entries API ([#8](https://github.com/alse-sym/symphony-api-demo/pull/8))
+- Added `/api/time-entries` resource for tracking hours worked on tasks
+- Filter entries by `taskId`, `username`, and `date`
+- Full CRUD operations with automatic ID generation
+- Preserves immutable fields (`id`, `taskId`, `createdAt`) during updates
+
+### Comments API ([#4](https://github.com/alse-sym/symphony-api-demo/pull/4))
+- Added `/api/comments` resource with polymorphic attachment support
+- Comments can attach to either tasks or projects via `targetType`/`targetId` pattern
+- Filter by `targetType`, `targetId`, and `author`
+- Full CRUD operations with proper field preservation
+
+### Milestones API ([#1](https://github.com/alse-sym/symphony-api-demo/pull/1))
+- Added `/api/milestones` resource for tracking project milestones
+- Three status states: `pending`, `in_progress`, `reached`
+- Auto-timestamps `reachedAt` when status changes to `reached`
+- Filter by `projectId` and `status`
+- Full CRUD operations with optional due dates
+
+## Fixes
+
+None
+
+## Upgrade Notes
+
+This release is fully backward compatible. All new APIs follow consistent patterns:
+
+- Standard CRUD endpoints (GET, POST, PATCH, DELETE)
+- Consistent error handling with `NOT_FOUND` for unknown IDs
+- Automatic ID generation for new resources
+- ISO 8601 timestamps for all date fields
+
+### New Endpoints Summary
+
+| Resource | Base Path | Key Features |
+|----------|-----------|--------------|
+| Webhooks | `/api/webhooks` | Event subscriptions, secret management |
+| Time Entries | `/api/time-entries` | Task time tracking, date filtering |
+| Comments | `/api/comments` | Polymorphic attachments (tasks/projects) |
+| Milestones | `/api/milestones` | Status tracking, auto-timestamping |
+
+All endpoints include comprehensive seed data for testing and development.
+
+---
+
 ## v1.1.2
 
 # Release v1.1.2
@@ -149,34 +213,3 @@ This is the first release. No upgrade steps required.
 ---
 
 Generated with gh-aw release notes automation
-
----
-
-## v1.0.0
-
-**Initial release**
-
-### Highlights
-
-- Express-based REST API with 13 endpoints for projects, tasks, and teams.
-- In-memory data store with pre-populated seed data.
-- CORS enabled by default.
-- Centralized JSON error handling.
-
-### Breaking Changes
-
-None (initial release).
-
-### Enhancements
-
-- `GET /api/projects` supports `?status=` filtering.
-- `GET /api/tasks` supports `?projectId=`, `?assignee=`, and `?status=` filtering.
-- `GET /api/teams` returns a compact summary with `memberCount`; full members available via `GET /api/teams/:id`.
-
-### Fixes
-
-None (initial release).
-
-### Upgrade Notes
-
-No prior version to upgrade from.
