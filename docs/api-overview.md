@@ -93,3 +93,8 @@ Cross-Origin Resource Sharing is enabled for all origins by default (`cors()` mi
 | `GET` | `/api/teams` | List teams |
 | `POST` | `/api/teams` | Create team |
 | `GET` | `/api/teams/:id` | Get team |
+| `GET` | `/api/comments` | List comments |
+| `POST` | `/api/comments` | Create comment |
+| `GET` | `/api/comments/:id` | Get comment |
+| `PATCH` | `/api/comments/:id` | Update comment |
+| `DELETE` | `/api/comments/:id` | Delete comment |
