@@ -75,6 +75,57 @@ All endpoints include comprehensive seed data for testing and development.
 
 ---
 
+## v1.1.4
+
+## Highlights
+
+This release expands the Symphony API with five new resource endpoints, adding comprehensive project management capabilities including milestone tracking, collaboration features, time logging, webhook integrations, and audit trails.
+
+## Breaking Changes
+
+None
+
+## Enhancements
+
+### New API Resources
+
+- **Milestones API** ([#1](https://github.com/alse-sym/symphony-api-demo/pull/1)) - Track project milestones with full CRUD operations
+  - Filter by project ID and status (`pending`, `in_progress`, `reached`)
+  - Auto-timestamp when milestones are reached
+  - 5 endpoints: list, create, get by ID, update, delete
+
+- **Comments API** ([#4](https://github.com/alse-sym/symphony-api-demo/pull/4)) - Add threaded comments to tasks and projects
+  - Polymorphic target system supports both tasks and projects
+  - Filter by target type, target ID, and author
+  - Full CRUD with 5 endpoints
+
+- **Time Entries API** ([#8](https://github.com/alse-sym/symphony-api-demo/pull/8)) - Log and track hours worked on tasks
+  - Filter by task ID, username, and date
+  - Track descriptions and hours with decimal precision
+  - Full CRUD operations
+
+- **Webhooks API** ([#11](https://github.com/alse-sym/symphony-api-demo/pull/11)) - Register callback URLs for event notifications
+  - Support for 12 event types plus wildcard (`*`) subscriptions
+  - Auto-generated secrets with security-first design (redacted in read responses)
+  - Active/inactive toggling for webhook management
+  - Event validation against whitelist
+
+- **Activity Log API** ([#12](https://github.com/alse-sym/symphony-api-demo/pull/12)) - Immutable audit trail of all API actions
+  - Append-only design (no update or delete operations)
+  - Rich filtering by action, actor, resource type, resource ID, and time range
+  - Results sorted newest-first with optional limit for pagination
+  - Comprehensive metadata tracking for audit compliance
+
+## Fixes
+
+None
+
+## Upgrade Notes
+
+All new endpoints are available immediately at their respective `/api/*` paths. No migration or configuration changes required. The Activity Log API is designed as an append-only audit trail and should be integrated into your logging workflow if compliance tracking is needed.
+
+---
+
 ## v1.1.2
 
 # Release v1.1.2
