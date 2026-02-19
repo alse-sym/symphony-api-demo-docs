@@ -7,7 +7,7 @@ sidebar_position: 6
 
 # Modules Overview
 
-The Symphony API is organized into three functional modules, each encapsulated in its own route file. This page provides a summary of each module and its responsibilities.
+The Symphony API is organized into four functional modules, each encapsulated in its own route file. This page provides a summary of each module and its responsibilities.
 
 ## Projects module
 
@@ -55,6 +55,22 @@ Manages teams and their membership.
 
 Each team contains a `members` array. Each member has a `username` and a `role` (e.g. `lead`, `engineer`, `designer`).
 
+## Milestones module
+
+**File:** `src/routes/milestones.js`
+
+Manages project milestones — key checkpoints and deliverables that track progress toward project goals.
+
+| Capability | Endpoint |
+|---|---|
+| List milestones (filterable by `projectId`, `status`) | `GET /api/milestones` |
+| Create a milestone | `POST /api/milestones` |
+| Retrieve a single milestone | `GET /api/milestones/:id` |
+| Partially update a milestone | `PATCH /api/milestones/:id` |
+| Delete a milestone | `DELETE /api/milestones/:id` |
+
+Milestones have a `status` field that can be `pending`, `in_progress`, or `reached`. When a milestone is updated to `reached` status, the API automatically sets the `reachedAt` timestamp to record when the milestone was achieved.
+
 ## Seed data
 
 The API ships with pre-populated data files in `src/data/`:
@@ -64,5 +80,6 @@ The API ships with pre-populated data files in `src/data/`:
 | `projects.json` | 5 | Mix of planned, active, and completed projects |
 | `tasks.json` | 10 | Tasks across all projects in various statuses |
 | `teams.json` | 3 | Teams with 2–3 members each |
+| `milestones.json` | 5 | Milestones across projects in various statuses |
 
 Seed data is loaded once at server startup. Any mutations made through the API persist only until the server is restarted.

@@ -93,3 +93,8 @@ Cross-Origin Resource Sharing is enabled for all origins by default (`cors()` mi
 | `GET` | `/api/teams` | List teams |
 | `POST` | `/api/teams` | Create team |
 | `GET` | `/api/teams/:id` | Get team |
+| `GET` | `/api/milestones` | List milestones |
+| `POST` | `/api/milestones` | Create milestone |
+| `GET` | `/api/milestones/:id` | Get milestone |
+| `PATCH` | `/api/milestones/:id` | Update milestone |
+| `DELETE` | `/api/milestones/:id` | Delete milestone |
