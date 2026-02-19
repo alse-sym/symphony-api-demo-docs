@@ -11,6 +11,7 @@ on:
     types: [symphony-release]
 
 permissions:
+  actions: write
   contents: write
 
 jobs:
@@ -60,6 +61,11 @@ jobs:
           fi
           git commit -m "chore(docs): cut version ${DOCS_VERSION}"
           git push origin HEAD:main
+
+      - name: Trigger deploy
+        run: gh workflow run "Deploy Docusaurus to GitHub Pages"
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Create or update docs release
         run: |
