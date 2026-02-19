@@ -37,6 +37,7 @@ const sidebars = {
         "comments-api",
         "notifications-api",
         "webhooks-api",
+        "templates-api",
       ],
     },
     {

@@ -109,3 +109,8 @@ Cross-Origin Resource Sharing is enabled for all origins by default (`cors()` mi
 | `GET` | `/api/webhooks/:id` | Get webhook |
 | `PATCH` | `/api/webhooks/:id` | Update webhook |
 | `DELETE` | `/api/webhooks/:id` | Delete webhook |
+| `GET` | `/api/templates` | List templates |
+| `POST` | `/api/templates` | Create template |
+| `GET` | `/api/templates/:id` | Get template |
+| `PATCH` | `/api/templates/:id` | Update template |
+| `DELETE` | `/api/templates/:id` | Delete template |
