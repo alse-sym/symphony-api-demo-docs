@@ -5,6 +5,7 @@ on:
     types: [opened, reopened, synchronize, ready_for_review, labeled]
 
 permissions:
+  actions: write
   contents: write
   pull-requests: write
 
@@ -13,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Merge trusted automation PRs
+        id: merge
         uses: actions/github-script@v8
         with:
           script: |
@@ -25,6 +27,7 @@ jobs:
 
             if (!isSameRepo || !isAutomation || !isMergeableState) {
               core.info("Skipping: PR is not a trusted automation PR.");
+              core.setOutput("merged", "false");
               return;
             }
 
@@ -36,6 +39,14 @@ jobs:
                 merge_method: "squash"
               });
               core.info(`Merged PR #${pr.number}`);
+              core.setOutput("merged", "true");
             } catch (error) {
               core.warning(`Auto-merge attempt did not succeed yet: ${error.message}`);
+              core.setOutput("merged", "false");
             }
+
+      - name: Trigger deploy
+        if: steps.merge.outputs.merged == 'true'
+        run: gh workflow run "Deploy Docusaurus to GitHub Pages"
+        env:
+          GH_TOKEN: ${{ github.token }}
