@@ -104,3 +104,8 @@ Cross-Origin Resource Sharing is enabled for all origins by default (`cors()` mi
 | `PATCH` | `/api/notifications/:id/read` | Mark notification as read |
 | `PATCH` | `/api/notifications/read-all` | Mark all notifications as read |
 | `DELETE` | `/api/notifications/:id` | Delete notification |
+| `GET` | `/api/webhooks` | List webhooks |
+| `POST` | `/api/webhooks` | Create webhook |
+| `GET` | `/api/webhooks/:id` | Get webhook |
+| `PATCH` | `/api/webhooks/:id` | Update webhook |
+| `DELETE` | `/api/webhooks/:id` | Delete webhook |
