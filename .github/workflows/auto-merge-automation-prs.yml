@@ -47,6 +47,6 @@ jobs:
 
       - name: Trigger deploy
         if: steps.merge.outputs.merged == 'true'
-        run: gh workflow run "Deploy Docusaurus to GitHub Pages"
+        run: gh workflow run "Deploy Docusaurus to GitHub Pages" --repo "${{ github.repository }}"
         env:
           GH_TOKEN: ${{ github.token }}

@@ -63,7 +63,7 @@ jobs:
           git push origin HEAD:main
 
       - name: Trigger deploy
-        run: gh workflow run "Deploy Docusaurus to GitHub Pages"
+        run: gh workflow run "Deploy Docusaurus to GitHub Pages" --repo "${{ github.repository }}"
         env:
           GH_TOKEN: ${{ github.token }}
 
