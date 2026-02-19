@@ -109,3 +109,6 @@ Cross-Origin Resource Sharing is enabled for all origins by default (`cors()` mi
 | `GET` | `/api/webhooks/:id` | Get webhook |
 | `PATCH` | `/api/webhooks/:id` | Update webhook |
 | `DELETE` | `/api/webhooks/:id` | Delete webhook |
+| `GET` | `/api/activity-log` | List activity log entries |
+| `POST` | `/api/activity-log` | Create activity log entry |
+| `GET` | `/api/activity-log/:id` | Get activity log entry |
